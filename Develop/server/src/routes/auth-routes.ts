@@ -16,15 +16,15 @@ export const login = async (req: Request, res: Response) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Compare the password with the hashed password in the database
+        // Validate the password
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             return res.status(401).json({ message: 'Invalid password' });
         }
 
-        // Generate a JWT token
+        // Sign a JWT token
         const token = jwt.sign(
-            { id: user.id, username: user.username },
+            { userId: user.id, username: user.username },
             process.env.JWT_SECRET as string, // Ensure JWT_SECRET is defined in .env
             { expiresIn: '1h' }
         );
