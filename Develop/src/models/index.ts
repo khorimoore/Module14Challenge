@@ -21,4 +21,12 @@ const Ticket = TicketFactory(sequelize);
 User.hasMany(Ticket, { foreignKey: 'assignedUserId' });
 Ticket.belongsTo(User, { foreignKey: 'assignedUserId', as: 'assignedUser'});
 
+sequelize.sync()
+  .then(() => {
+    console.log("Database synced and tables created!");
+  })
+  .catch((err: any) => {
+    console.error("Error syncing database:", err);
+  });
+
 export { sequelize, User, Ticket };

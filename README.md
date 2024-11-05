@@ -153,7 +153,7 @@ Please submit a video walkthrough of the project demonstrating:
 
 	•	Overall Kanban board functionality
 
-Submit your video walk-through video link here: 
+// Submit your video walk-through video link here: 
 
 
 
